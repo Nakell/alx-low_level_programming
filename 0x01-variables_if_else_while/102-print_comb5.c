@@ -9,20 +9,38 @@ int main(void)
 
 	int b;
 
-	for (a = 0; a <= 8; a++)
+	for (a = 0; a <= 99; a++)
 	{
-		for (b = a + 1 ; b <= 9; b++)
+		for (b = a; b <= 99; b++)
 		{
-			putchar('0' + a);
-			putchar('0' + b);
-
-			if (a != 8 || b != 9)
+			if (a != b)
 			{
-				putchar(',');
-				putchar(' ');
+				if (a < 10)
+				{
+					putchar('0');
+					putchar('0' + a);
+				}
+				else
+				{
+					putchar(' ');
+
+					if (b < 10)
+					{
+						putchar('0');
+						putchar('0' + b);
+					}
+					else
+					{
+						putchar('0' + b / 10);
+						putchar('0' +b % 10);
+					}
+					if (a != 99 || b != 98)
+					{
+						putchar(',');
+						putchar(' ');
+					}
+				}
 			}
-			if (b == 9)
-				break;
 		}
 	}
 	putchar('\n');
