@@ -4,8 +4,8 @@
 /**
  * main - entry point
  *
- * Description: prints the numbers from 1-100 for mutliples of 3 print Fizz,for 5 print Buzz, for both print FizzBuzz
- *
+ * Description: prints the numbers from 1-100
+ * for mutliples of 3 print Fizz,for 5 print Buzz, for both print FizzBuzz
  * Return: 0
  */
 int main(void)
