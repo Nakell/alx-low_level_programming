@@ -2,7 +2,8 @@
 
 /**
  * *_strcat - concatenates two string
- * @char *dest char *src: appends the src string to the dest
+ * @dest: appends of the string
+ * @src: appends of the string
  * Return: dest
  */
 
