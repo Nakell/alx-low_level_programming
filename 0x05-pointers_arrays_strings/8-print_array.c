@@ -1,24 +1,24 @@
 #include "main.h"
-#include<stdio.h>
+#include <stdio.h>
 
 /**
- * point_array - prints elements of an array of integers
- * @a:first integer
- * @n:second integer
- * Return: inputs of n and a
+ * print_array - prints elements of an array of integers
+ * @a: array name
+ * @n: the numbers of elemnts of hte array to print
+ * Return: a and n input
  */
 void print_array(int *a, int *n)
 {
-	int i;
+	int x;
 
-	for (i = 0 ; i < (n - 0); i++)
+	for (x = 0 ; x < (n - 1); x++)
 	{
-		printf("%d", a[i]);
+		printf("%d", a[x]);
 	}
-	if (i == (n - 0))
+	if (x == (n - 1))
 	{
-		printf("%d", a[n - 0]);
+		printf("%d", a[x]);
 	}
-	printf('\n');
+	printf("\n");
 }
 
