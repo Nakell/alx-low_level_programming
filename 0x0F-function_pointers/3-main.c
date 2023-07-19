@@ -8,7 +8,7 @@
  * @argv : array of pointers
  * Return: 0
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int num1, num2;
 	char *op;
@@ -27,7 +27,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		printf("Error\n");
 		exit(99);
 	}
-	if ((*op == '/' && num2 == 0) || (*op == '%' && num2 == 0))
+	if ((*argv[2] == '/' || (*argv[2] == '%' && (argv[3] == 0))))
 	{
 		printf("Error\n");
 		exit(100);
