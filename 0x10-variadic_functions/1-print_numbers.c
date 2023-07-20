@@ -23,7 +23,8 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	{
 		number = va_arg(arg_list, int);
 		printf("%d", number);
-		printf("%s", separator);
+		if (i != n - 1)
+			printf("%s", separator);
 	}
 	printf("\n");
 	va_end(arg_list);
