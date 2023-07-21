@@ -13,9 +13,6 @@ void print_all(const char * const format, ...)
 	char *separator = "";
 	va_list arg_list;
 
-	if (format == NULL)
-		return;
-
 	va_start(arg_list, format);
 
 	while (format && (format[i] != '\0'))
