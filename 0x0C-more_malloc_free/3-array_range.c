@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * *array _range - creates an array of integers
+ * *array_range - creates an array of integers
  * @min: values
  * @max: values
  * Return: null if malloc fails
@@ -13,17 +13,19 @@ int *array_range(int min, int max)
 
 	if (min > max)
 		return (NULL);
-	size = max - min + 1;
-
+	size = 0;
+	for (x = min; x <= max; x++)
+		size++;
 	a = malloc(sizeof(int) * size);
 	if (a == NULL)
-	return (NULL);
+		return (NULL);
 
-	for (x = 0; x < size; x++)
-	a[x] = min++;
+	x = 0;
+	while (min <= max)
+	{
+		a[x] = min;
+		x++;
+		min++;
+	}
 	return (a);
 }
-
-
-
-
