@@ -18,7 +18,9 @@ int main(int argc, char *argv[])
 	if (argc > 1)
 	{
 		for (x = 1; x < argc; x++)
+		{
 			z = argv[x];
+
 		for (y = 0; y < strlen(z); y++)
 		{
 			if (y[z] < 48 || y[z] > 57)
@@ -29,6 +31,8 @@ int main(int argc, char *argv[])
 		}
 		sum += atoi(z);
 		z++;
+		}
+		printf("%d\n", sum);
 	}
 	else
 	{
