@@ -25,16 +25,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filedes == -1)
 	{
-		free(buffer);
-		close(filedes);
 		return (0);
 	}
-	if (_read == -1 || _write == -1 || _write != _read)
-	{
-		free(buffer);
-		close(filedes);
-		return (0);
-	}
-
+	free(buffer);
+	close(filedes);
 	return (_write);
 }
