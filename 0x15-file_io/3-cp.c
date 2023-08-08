@@ -1,15 +1,16 @@
 #include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-#define BUFF_SIZE 1024
-
-char *create_new_buff(void);
+char *create_new_buff(char *file);
 void close_the_file(int filedes);
 
 /**
  * create_new_buff - allocates 1024 bytes of buff
+ * @file: the name of the buffer storing chars
  * Return: newly allocated buff size
  */
-char *create_new_buff(void)
+char *create_new_buff(char *file)
 {
 	char *buffer;
 
@@ -17,7 +18,8 @@ char *create_new_buff(void)
 
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't allocate for buffer\n");
+		dprintf(STDERR_FILENO,
+				"Error: Can't write to the %s\n", file);
 		exit(99);
 	}
 	return (buffer);
@@ -48,37 +50,37 @@ void close_the_file(int filedes)
 int main(int argc, char *argv[])
 {
 	int _read, _write, file_from, file_to;
-	char *buffer;
+	char *bytes;
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	buffer = create_new_buff();
+	bytes = create_new_buff(argv[2]);
 	file_from = open(argv[1], O_RDONLY);
-	_read = read(file_from, buffer, 1024);
+	_read = read(file_from, bytes, 1024);
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
 		if (file_from == -1 || _read == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
+		free(bytes);
 		exit(98);
 		}
-		_write = write(file_to, buffer, _read);
+		_write = write(file_to, bytes, _read);
 		if (file_to == -1 || _write == -1)
 		{
 			dprintf(STDERR_FILENO,
-				"Error: Can't writeto %s\n", argv[2]);
-		free(buffer);
+				"Error: Can't write to %s\n", argv[2]);
+		free(bytes);
 		exit(99);
 		}
-		_read = read(file_from, buffer, 1024);
+		_read = read(file_from, bytes, 1024);
 		file_to = open(argv[2], O_WRONLY | O_APPEND);
 	} while (_read > 0);
-	free(buffer);
+	free(bytes);
 	close_the_file(file_from);
 	close_the_file(file_to);
 	return (0);
