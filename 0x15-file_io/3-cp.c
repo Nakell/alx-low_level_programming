@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 char *create_new_buff(char *file);
-void close_the_file(int filedes);
+void close_the_file(int fd);
 
 /**
  * create_new_buff - allocates 1024 bytes of buff
@@ -27,17 +27,17 @@ char *create_new_buff(char *file)
 
 /**
  * close_the_file - closes filedescriptors
- * @filedes: the file descriptor to be closed
+ * @fd: the file descriptor to be closed
  */
-void close_the_file(int filedes)
+void close_the_file(int fd)
 {
 	int x;
 
-	x = close(filedes);
+	x = close(fd);
 
 	if (x == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close filedes %d\n", filedes);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd;
 		exit(100);
 	}
 }
