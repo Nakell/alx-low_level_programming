@@ -12,12 +12,12 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (filename == NULL)
 		return (-1);
+	filedes = open(filename, O_APPEND | O_WRONLY)
 	if (text_content != NULL)
 	{
-		for (count = 0; text_content[count];)
+		for (count = 0; text_content[count] != '\0';)
 			count++;
 	}
-	filedes = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0664);
 	_write = write(filedes, text_content, count);
 	if (filedes == -1)
 		return (-1);
