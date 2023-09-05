@@ -30,7 +30,7 @@ void close_file(int filedes)
 
 	if (x == -1)
 	{
-		dprintf(STDERR_FILENO, "Error; Can't clode fd %d\n", filedes);
+		dprintf(STDERR_FILENO, "Error; Can't close filedes %d\n", filedes);
 		exit(100);
 	}
 }
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 		if (file_fro == -1 || _read == -1)
 		{
 			dprintf(STDERR_FILENO,
-					"Error: Can't read form filr %s\n", argv[1]);
+					"Error: Can't read form file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 		if (file_t == -1 || _write == -1)
 		{
 			dprintf(STDERR_FILENO,
-					"Erro: Can't worite to %s\n", argv[2]);
+					"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
