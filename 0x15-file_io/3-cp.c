@@ -20,17 +20,17 @@ char *create_buff(char *file)
 }
 /**
  * close_file - closes file descriptors
- * @filedes: The file descriptor to be closed
+ * @fd: The file descriptor to be closed
  */
-void close_file(int filedes)
+void close_file(int fd)
 {
 	int x;
 
-	x = close(filedes);
+	x = close(fd);
 
 	if (x == -1)
 	{
-		dprintf(STDERR_FILENO, "Error; Can't close filedes %d\n", filedes);
+		dprintf(STDERR_FILENO, "Error; Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
