@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*
+/**
  * create_buff - allocates 1024 bytes for a buffer
  * @file: name of the file buffer is storing chars for
  * Return: A pointer to the newly allocated buffer
@@ -8,6 +8,7 @@
 char *create_buff(char *file)
 {
 	char *buffer;
+
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 	{
@@ -17,13 +18,14 @@ char *create_buff(char *file)
 	}
 	return (buffer);
 }
-/*
+/**
  * close_file - closes file descriptors
  * @filedes: The file descriptor to be closed
  */
 void close_file(int filedes)
 {
 	int x;
+
 	x = close(filedes);
 
 	if (x == -1)
@@ -55,10 +57,9 @@ int main(int argc, char *argv[])
 	buffer = create_buff(argv[2]);
 	file_fro = open(argv[1], O_RDONLY);
 	_read = read(file_fro, buffer, 1024);
-	file_t = open(argv[2], O_CREAT |O_WRONLY | O_TRUNC, 0664);
-	do
-	{
-		if(file_fro == -1 || _read == -1)
+	file_t = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	do {
+		if (file_fro == -1 || _read == -1)
 		{
 			dprintf(STDERR_FILENO,
 					"Error: Can't read form filr %s\n", argv[1]);
@@ -66,7 +67,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		_write = write(file_t, buffer, _read);
-		if(file_t == -1 || _write == -1)
+		if (file_t == -1 || _write == -1)
 		{
 			dprintf(STDERR_FILENO,
 					"Erro: Can't worite to %s\n", argv[2]);
@@ -75,8 +76,7 @@ int main(int argc, char *argv[])
 		}
 		_read = read(file_fro, buffer, 1024);
 		file_t = open(argv[2], O_WRONLY | O_APPEND);
-	}
-	while(_read > 0);
+	} while (_read > 0);
 	free(buffer);
 	close_file(file_fro);
 	close_file(file_t);
